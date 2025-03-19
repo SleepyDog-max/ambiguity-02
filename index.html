@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歧义小测试 - 高难度版</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f4f8; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .quiz-container { background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 600px; text-align: center; }
+        h1 { color: #ff6f61; margin-bottom: 20px; }
+        .question { display: none; color: #333; }
+        .question.active { display: block; }
+        .options label { display: block; margin: 10px 0; padding: 10px; background-color: #e0f7fa; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+        .options label:hover { background-color: #b2ebf2; }
+        input[type="radio"], input[type="text"], textarea { margin-right: 10px; }
+        .buttons { margin-top: 20px; }
+        button { padding: 10px 20px; margin: 0 10px; background-color: #ffca28; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+        button:hover { background-color: #ffb300; }
+        button:disabled { background-color: #ccc; cursor: not-allowed; }
+        .summary { display: none; text-align: left; }
+        .summary h2 { color: #4caf50; }
+        .summary p { color: #555; }
+        #restart { margin-top: 20px; background-color: #4caf50; color: white; }
+        #restart:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>歧义小测试 - 高难度版</h1>
+
+        <!-- Q1 -->
+        <div class="question" id="q1">
+            <p><strong>句子：</strong>他们说明天要下。</p>
+            <p><strong>问题：</strong>若韵律停顿为“他们说明 / 天要下”，可能的误解是：</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. 他们说明天要下降</label>
+                <label><input type="radio" name="q1" value="B"> B. 他们说明天要下雨</label>
+                <label><input type="radio" name="q1" value="C"> C. 他们说明 / 天要下地</label>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question" id="q2">
+            <p><strong>句子：</strong>他昨天拿了一张票。</p>
+            <p><strong>问题：</strong>“一张票”在此可能被理解为<input type="text" id="q2-answer" placeholder="请输入答案"></p>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question" id="q3">
+            <p><strong>句子：</strong>他是个老手。</p>
+            <p><strong>问题：</strong>“老手”在此可能不指下列哪项？</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A. 经验丰富的人</label>
+                <label><input type="radio" name="q3" value="B"> B. 年老的手</label>
+                <label><input type="radio" name="q3" value="C"> C. 老派的手艺人</label>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question" id="q4">
+            <p><strong>句子：</strong>他昨天送老王回家了。</p>
+            <p><strong>问题：</strong>下列句子有无歧义或其它问题？若有歧义或问题，如何消除这些歧义或问题？</p>
+            <textarea id="q4-answer" rows="6" cols="50" placeholder="请输入答案"></textarea>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question" id="q5">
+            <p><strong>句子：</strong>小王叫老李帮忙写信。</p>
+            <p><strong>问题：</strong>若韵律为“小王叫 / 老李帮忙写信”，最可能的含义是：</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A. 小王叫喊老李，让他帮忙写信</label>
+                <label><input type="radio" name="q5" value="B"> B. 小王命令老李帮忙写信</label>
+                <label><input type="radio" name="q5" value="C"> C. 小王请老李代写信件</label>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question" id="q6">
+            <p><strong>句子：</strong>他在车上睡了一觉。</p>
+            <p><strong>问题：</strong>写出此句的三种可能含义，考虑词汇的多义性。</p>
+            <textarea id="q6-answer" rows="6" cols="50" placeholder="请输入答案"></textarea>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question" id="q7">
+            <p><strong>句子：</strong>他说明天来试试。</p>
+            <p><strong>问题：</strong>下列句子有无歧义或其它问题？若有歧义或问题，如何消除这些歧义或问题？</p>
+            <textarea id="q7-answer" rows="6" cols="50" placeholder="请输入答案"></textarea>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question" id="q8">
+            <p><strong>句子：</strong>她把孩子交给老师。</p>
+            <p><strong>问题：</strong>“交给”在此可能被理解为<input type="text" id="q8-answer" placeholder="请输入答案"></p>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question" id="q9">
+            <p><strong>句子：</strong>他看了书生气了。</p>
+            <p><strong>问题：</strong>写出此句的三种可能含义，考虑韵律停顿的影响。</p>
+            <textarea id="q9-answer" rows="6" cols="50" placeholder="请输入答案"></textarea>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question" id="q10">
+            <p><strong>案例：</strong>张某与某装修公司签订合同，合同中约定“客厅安装木地板，材料费每平方米不超过200元。如有违约，装修公司需赔偿材料费两倍的差价”。装修完成后，张某发现客厅使用的是木地板，但每平方米材料费为250元，超出约定50元，总面积为20平方米。为此，张某起诉要求赔偿差价两倍，即2000元（50元 × 20平方米 × 2）。</p>
+            <p><strong>问题：</strong>如果你是法官，会给出什么样的审判结果？分析合同条款的歧义或问题，并提出改进建议。</p>
+            <textarea id="q10-answer" rows="8" cols="50" placeholder="请输入答案"></textarea>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary" id="summary">
+            <h2>测验结果</h2>
+            <p id="score"></p>
+            <p><strong>你的答案与解析：</strong></p>
+            <p id="q1-result"></p>
+            <p id="q2-result"></p>
+            <p id="q3-result"></p>
+            <p id="q4-result"></p>
+            <p id="q5-result"></p>
+            <p id="q6-result"></p>
+            <p id="q7-result"></p>
+            <p id="q8-result"></p>
+            <p id="q9-result"></p>
+            <p id="q10-result"></p>
+            <button id="restart">重新开始</button>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="buttons">
+            <button id="prev" disabled>上一题</button>
+            <button id="next">下一题</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const summary = document.getElementById('summary');
+        const scoreText = document.getElementById('score');
+        const restartBtn = document.getElementById('restart');
+        let currentQuestion = 0;
+
+        const answers = {
+            q1: { type: 'choice', correct: 'C', text: '他们说明 / 天要下地', explanation: '“要下”在中文中有多重含义，如“下雨”“下降”。若停顿为“他们说明 / 天要下”，句子被分割为“他们说明”和“天要下”两部分。“天要下”可被误解为“天要下地”（天空降落），而非更常见的“下雨”。这种歧义源于韵律停顿改变了句子的语义分组。正确含义需依赖语境，通常为“下雨”，但选项C展示了停顿导致的极端误解。' },
+            q2: { type: 'fill', correct: '一张选票', explanation: '“票”在现代汉语中是多义词，常见含义包括“车票”（train ticket）、“门票”（entry ticket），但也包括“选票”（ballot），如选举中的投票用纸。“他昨天拿了一张票”未指定“票”的类型，可能指“车票”或“选票”。歧义源于“票”的多义性，消除方法是具体化，如“他昨天拿了一张车票”或“他昨天拿了一张选票”。日常语境中“车票”更常见，但“选票”在选举场景下成立。' },
+            q3: { type: 'choice', correct: 'B', text: '年老的手', explanation: '“老手”是现代汉语中的常见词汇，通常指“经验丰富的人”（如老手司机）或“老派手艺人”（如传统工匠）。选项B“年老的手”是字面拆解（老+手），在日常语言中几乎不用，除非特意用作修辞或玩笑。歧义来源于“老”的多义性（年老 vs. 熟练），但语境通常明确指向A或C。' },
+            q4: { type: 'short', correct: '有歧义：\n1. 他昨天送老王回到家里。\n2. 他昨天送老王回老家了。\n消除方法：\n1. 改为“他昨天送老王回到家里”。\n2. 改为“他昨天送老王回老家了”。', explanation: '“回家”在中文中既可指“回到日常住处”（daily home），也可指“回到故乡”（hometown），尤其“送某人回家”常用于两种场景。句中“送老王回家”未指明地点，导致两种含义：一是送老王到其住所，二是送老王回故乡。歧义源于“家”的语义模糊，消除方法是明确“家”的指代，如用“家里”指住处，“老家”指故乡。' },
+            q5: { type: 'choice', correct: 'A', text: '小王叫喊老李，让他帮忙写信', explanation: '“叫”在中文中既可指“喊叫”（call out），也可指“请求/命令”（ask/order）。停顿“小王叫 / 老李帮忙写信”将“叫”与后续部分分开，使“叫”独立为动词，倾向于“喊叫”含义，而非连贯的“叫老李帮忙”。若无停顿，则可能是“请求”。歧义源于韵律改变动词范围，A为停顿下的主要含义。' },
+            q6: { type: 'short', correct: '1. 他在汽车上睡了一觉。\n2. 他在火车上睡了一觉。\n3. 他在车床上睡了一觉。', explanation: '“车”在中文中是多义词，指代包括“汽车”（car）、“火车”（train）和“车床”（lathe，机床）。句子“他在车上睡了一觉”未限定“车”的类型，导致三种可能含义。歧义源于词汇的多义性，消除方法是用具体名词替换“车”，如“汽车”“火车”“车床”。日常语境中“汽车”最常见，但其他含义在特定场景下成立。' },
+            q7: { type: 'short', correct: '有歧义：\n1. 他说明天要来试一试。\n2. 他说明天来试试的人。\n消除方法：\n1. 改为“他说他明天要来试试”。\n2. 改为“他说明天来试试的人是谁”。', explanation: '“来试试”在句法上可有不同分组：一是“来+试试”作“说明”的补语（他说明天要来试试），二是“明天来试试”作定语修饰“人”（他说明天来试试的人是谁）。歧义源于“来试试”的句法边界不清，属句法歧义（syntactic ambiguity）。消除方法是调整结构，明确“试试”的主语或范围。' },
+            q8: { type: 'fill', correct: '交给老师教育', explanation: '“交给”基本含义是“交付”（hand over），但在教育场景中常引申为“托付教育”（entrust for education），如“把孩子交给老师教育”。句子未明确“交给”后的动作，导致语义歧义。消除方法是补充目的，如“交给老师照顾”或“交给老师教育”，具体化意图。' },
+            q9: { type: 'short', correct: '1. 他看了书 / 生气了。\n2. 他看了 / 书生气了。\n3. 他看了书生 / 生气了。', explanation: '“书生气了”因韵律停顿产生三种含义：一是“看了书 / 生气了”（书引发他生气），二是“看了 / 书生气了”（他看后，书生生气），三是“看了书生 / 生气了”（看到书生后他生气）。歧义源于“书生”（scholar）可独立为词，且停顿改变主语。消除方法是添加标点或词语，如“他看了书，生气了”或“他看了书生后生气了”。' },
+            q10: { type: 'short', correct: '审判结果：支持张某，赔偿2000元。\n分析：条款“材料费每平方米不超过200元”明确上限，250元违约。“赔偿材料费两倍的差价”中“差价”可指超出部分（50元）或约定金额（200元），可能误解为8000元。\n改进建议：改为“如材料费超200元/平方米，赔偿超出部分两倍的费用”。', explanation: '合同条款“材料费每平方米不超过200元”设定了清晰界限，250元超出50元，违约成立。“两倍的差价”未定义“差价”基数：若为超出部分，则为50×20×2=2000元；若为约定金额，则为200×20×2=8000元。歧义源于“差价”的模糊性，法律上倾向保护消费者，2000元更合理。改进需明确“差价”计算方式。' }
+        };
+
+        questions[currentQuestion].classList.add('active');
+
+        nextBtn.addEventListener('click', () => {
+            questions[currentQuestion].classList.remove('active');
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                questions[currentQuestion].classList.add('active');
+                prevBtn.disabled = false;
+            } else {
+                showSummary();
+            }
+            if (currentQuestion === questions.length - 1) nextBtn.textContent = '提交';
+            if (currentQuestion >= questions.length) {
+                nextBtn.style.display = 'none';
+                prevBtn.style.display = 'none';
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            questions[currentQuestion].classList.remove('active');
+            currentQuestion--;
+            questions[currentQuestion].classList.add('active');
+            nextBtn.textContent = '下一题';
+            if (currentQuestion === 0) prevBtn.disabled = true;
+        });
+
+        function showSummary() {
+            let score = 0;
+            for (let i = 1; i <= 10; i++) {
+                const resultText = document.getElementById(`q${i}-result`);
+                const answer = answers[`q${i}`];
+                let userAnswer, userAnswerText;
+
+                if (!answer) {
+                    console.error(`Answer for q${i} not found!`);
+                    continue;
+                }
+
+                if (answer.type === 'choice') {
+                    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                    userAnswer = selected ? selected.value : null;
+                    userAnswerText = selected ? selected.nextSibling.textContent.trim() : '未选择';
+                    if (userAnswer === answer.correct) score++;
+                } else if (answer.type === 'fill') {
+                    userAnswer = document.getElementById(`q${i}-answer`).value.trim();
+                    userAnswerText = userAnswer || '未填写';
+                    if (userAnswer === answer.correct) score++;
+                } else if (answer.type === 'short') {
+                    userAnswer = document.getElementById(`q${i}-answer`).value.trim();
+                    userAnswerText = userAnswer || '未填写';
+                    if (userAnswer && userAnswer.includes('1.') && userAnswer.includes('2.')) score++;
+                }
+
+                // 获取题目文本，确保显示完整问题
+                const questionText = questions[i - 1].querySelector('p:first-child').textContent;
+
+                resultText.innerHTML = `${i}. ${questionText}<br>` +
+                                      `<strong>你的答案：</strong> ${userAnswerText}<br>` +
+                                      `<strong>正确答案：</strong> ${answer.text}<br>` +
+                                      `<strong>详细解析：</strong> ${answer.explanation}`;
+            }
+            questions.forEach(q => q.classList.remove('active'));
+            summary.style.display = 'block';
+            scoreText.textContent = `你的得分：${score} / 10`;
+        }
+
+        restartBtn.addEventListener('click', () => {
+            currentQuestion = 0;
+            questions.forEach((q, index) => {
+                q.classList.remove('active');
+                if (q.querySelector('input[type="radio"]')) q.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+                if (q.querySelector('input[type="text"]')) q.querySelector('input[type="text"]').value = '';
+                if (q.querySelector('textarea')) q.querySelector('textarea').value = '';
+                if (index === 0) q.classList.add('active');
+            });
+            summary.style.display = 'none';
+            prevBtn.disabled = true;
+            nextBtn.style.display = 'inline';
+            prevBtn.style.display = 'inline';
+            nextBtn.textContent = '下一题';
+        });
+    </script>
+</body>
+</html>
+
